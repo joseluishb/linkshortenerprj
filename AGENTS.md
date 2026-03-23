@@ -6,6 +6,12 @@ before making changes to any area of the codebase.
 
 For detailed guidelines on specific topics, refer to the modular documentation in the `/docs` directory. ALWAYS refer to the relevant .md file BEFORE generating any code.
 
+## Docs Index
+
+| Domain | File |
+|---|---|
+| Authentication (Clerk) | [`docs/auth.md`](docs/auth.md) |
+
 ## Project Overview
 
 A full-stack link shortener application where authenticated users can create, manage, and
