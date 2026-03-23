@@ -11,6 +11,7 @@ For detailed guidelines on specific topics, refer to the modular documentation i
 | Domain | File |
 |---|---|
 | Authentication (Clerk) | [`docs/auth.md`](docs/auth.md) |
+| UI Components (shadcn/ui) | [`docs/ui.md`](docs/ui.md) |
 
 ## Project Overview
 
