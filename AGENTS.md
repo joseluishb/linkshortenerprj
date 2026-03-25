@@ -1,12 +1,13 @@
 # Link Shortener — Agent Instructions
 
 This file is the single source of truth for LLM coding agents working in this repository.
-All detailed standards are maintained in the `/docs` directory. Read the relevant doc(s)
-before making changes to any area of the codebase.
+All detailed standards are maintained in the `/docs` directory.
 
-For detailed guidelines on specific topics, refer to the modular documentation in the `/docs` directory. ALWAYS refer to the relevant .md file BEFORE generating any code.
+> **CRITICAL — NON-NEGOTIABLE:** You MUST read the relevant `/docs` file(s) BEFORE writing or generating ANY code, making ANY edits, or proposing ANY changes. No exceptions. Skipping this step is a failure mode. If you are unsure which doc applies, read all of them.
 
 ## Docs Index
+
+**You MUST open and read the relevant file from this table before generating any code for the corresponding domain. Do not rely on memory or assumptions — always read the file.**
 
 | Domain | File |
 |---|---|
@@ -21,7 +22,7 @@ they visit a short link.
 
 ## Quick Rules
 
-- **Always read the relevant doc** before modifying a domain (DB, auth, UI, etc.).
+- **ALWAYS read the relevant `/docs` file FIRST** — before modifying, creating, or generating any code for a domain (DB, auth, UI, etc.). This is the most important rule.
 - **Never bypass TypeScript** — no `any`, no `@ts-ignore` without an explanatory comment.
 - **Never commit secrets** — all environment variables go in `.env.local` and are typed in `env.ts`.
 - **Server-first** — prefer React Server Components and Server Actions over client-side fetching.
@@ -31,10 +32,10 @@ they visit a short link.
 
 ## Agent Workflow
 
-Follow these steps on every task:
+Follow these steps on every task — **every step is mandatory, no skipping**:
 
 1. **Identify the domain** (DB, auth, UI, routing, etc.).
-2. **Read the relevant doc(s)** from the index above.
+2. **STOP — Read the relevant `/docs` file(s)** from the index above. You MUST do this before proceeding. Do not write a single line of code until you have read the file and understood its constraints.
 3. **Read the existing code** in the affected files before writing anything.
 4. **Implement the minimal change** — do not refactor unrelated code.
 5. **Verify TypeScript** compiles without errors (`tsc --noEmit`).
