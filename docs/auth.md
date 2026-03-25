@@ -11,16 +11,16 @@ All authentication in this app is handled exclusively by **Clerk**. No other aut
 ## Protected Routes
 
 - `/dashboard` is a protected route. Unauthenticated users must not be able to access it.
-- Use `clerkMiddleware` in `middleware.ts` to enforce this. Example:
+- Use `clerkMiddleware` in `proxy.ts` to enforce this. Example:
 
 ```ts
-// middleware.ts
+// proxy.ts
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 
 const isProtectedRoute = createRouteMatcher(["/dashboard(.*)"]);
 
-export default clerkMiddleware((auth, req) => {
-  if (isProtectedRoute(req)) auth().protect();
+export default clerkMiddleware(async (auth, req) => {
+  if (isProtectedRoute(req)) await auth.protect();
 });
 
 export const config = {
