@@ -107,7 +107,7 @@ export default async function Home() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <span>&copy; {new Date().getFullYear()} LinkShortener. All rights reserved.</span>
           <a
-            href="https://hube.pe/contactus"
+            href="/contactus"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-foreground underline underline-offset-4 transition-colors"
