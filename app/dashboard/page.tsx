@@ -9,6 +9,8 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { CreateLinkDialog } from "./create-link-dialog";
+import { EditLinkDialog } from "./edit-link-dialog";
+import { DeleteLinkDialog } from "./delete-link-dialog";
 
 export default async function DashboardPage() {
   const { userId } = await auth();
@@ -44,12 +46,18 @@ export default async function DashboardPage() {
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-sm text-muted-foreground">
-                    Short code:{" "}
-                    <span className="font-mono font-semibold text-foreground">
-                      {link.shortCode}
-                    </span>
-                  </p>
+                  <div className="flex items-center justify-between">
+                    <p className="text-sm text-muted-foreground">
+                      Short code:{" "}
+                      <span className="font-mono font-semibold text-foreground">
+                        {link.shortCode}
+                      </span>
+                    </p>
+                    <div className="flex gap-2">
+                      <EditLinkDialog link={link} />
+                      <DeleteLinkDialog linkId={link.id} shortCode={link.shortCode} />
+                    </div>
+                  </div>
                 </CardContent>
               </Card>
             </li>
