@@ -3,6 +3,16 @@
 This file is the single source of truth for LLM coding agents working in this repository.
 All detailed standards are maintained in the `/docs` directory.
 
+## Mandatory Requirement
+
+Before generating ANY code, you MUST:
+
+1. **READ the relevant documentation files** in the `/docs` directory for the domain you are working in (auth, UI, etc.). The table below will guide you to the correct file(s).
+
+2. **FOLLOW the patterns and guidelines** in those files to the letter. Do not deviate, do not make assumptions, do not rely on memory. Always read the docs first.
+
+3. **DO NOT proceed** to write or generate code until you have read and understood the relevant documentation. Skipping this step is a failure mode and will lead to incorrect implementations.
+
 > **CRITICAL — NON-NEGOTIABLE:** You MUST read the relevant `/docs` file(s) BEFORE writing or generating ANY code, making ANY edits, or proposing ANY changes. No exceptions. Skipping this step is a failure mode. If you are unsure which doc applies, read all of them.
 
 ## Docs Index
@@ -10,7 +20,7 @@ All detailed standards are maintained in the `/docs` directory.
 **You MUST open and read the relevant file from this table before generating any code for the corresponding domain. Do not rely on memory or assumptions — always read the file.**
 
 | Domain | File |
-|---|---|
+| --- | --- |
 | Authentication (Clerk) | [`docs/auth.md`](docs/auth.md) |
 | UI Components (shadcn/ui) | [`docs/ui.md`](docs/ui.md) |
 

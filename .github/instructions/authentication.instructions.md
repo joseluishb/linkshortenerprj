@@ -1,4 +1,8 @@
-# Authentication
+---
+description: Read this before implementing or modifying authentication in the project.
+---
+
+# Authentication Guidelines
 
 All authentication in this app is handled exclusively by **Clerk**. No other auth method, custom session logic, JWT handling, or password logic may be used.
 
