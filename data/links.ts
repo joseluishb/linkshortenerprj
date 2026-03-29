@@ -31,3 +31,14 @@ export async function deleteLink(id: number, userId: string): Promise<void> {
     .delete(linksTable)
     .where(and(eq(linksTable.id, id), eq(linksTable.userId, userId)));
 }
+
+export async function getLinkByShortCode(
+  shortCode: string
+): Promise<SelectLink | undefined> {
+  const results = await db
+    .select()
+    .from(linksTable)
+    .where(eq(linksTable.shortCode, shortCode))
+    .limit(1);
+  return results[0];
+}
