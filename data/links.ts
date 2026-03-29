@@ -1,4 +1,4 @@
-import { eq } from "drizzle-orm";
+import { desc, eq } from "drizzle-orm";
 import { db, linksTable, InsertLink, SelectLink } from "@/db";
 
 export async function getLinksByUserId(userId: string): Promise<SelectLink[]> {
@@ -6,7 +6,7 @@ export async function getLinksByUserId(userId: string): Promise<SelectLink[]> {
     .select()
     .from(linksTable)
     .where(eq(linksTable.userId, userId))
-    .orderBy(linksTable.createdAt);
+    .orderBy(desc(linksTable.updatedAt));
 }
 
 export async function createLink(
