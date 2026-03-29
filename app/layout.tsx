@@ -37,7 +37,9 @@ export default function RootLayout({
             theme: shadcn,
           }}
         >
-          <header className="flex items-center justify-end gap-3 border-b px-4 py-3">
+          <header className="flex items-center justify-between gap-3 border-b px-4 py-3">
+            <span className="font-semibold text-lg tracking-tight">LinkShortenerPrj</span>
+            <div className="flex items-center gap-3">
             <Show when="signed-out">
               <SignInButton mode="modal" forceRedirectUrl="/dashboard">
                 <Button variant="ghost">Sign in</Button>
@@ -49,6 +51,7 @@ export default function RootLayout({
             <Show when="signed-in">
               <UserButton />
             </Show>
+            </div>
           </header>
           {children}
         </ClerkProvider>
