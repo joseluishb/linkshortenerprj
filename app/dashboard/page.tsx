@@ -8,6 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { CreateLinkDialog } from "./create-link-dialog";
 
 export default async function DashboardPage() {
   const { userId } = await auth();
@@ -16,7 +17,10 @@ export default async function DashboardPage() {
 
   return (
     <main className="mx-auto w-full max-w-6xl px-4 py-10">
-      <h1 className="mb-6 text-2xl font-semibold">Your Links</h1>
+      <div className="mb-6 flex items-center justify-between">
+        <h1 className="text-2xl font-semibold">Your Links</h1>
+        <CreateLinkDialog />
+      </div>
       {links.length === 0 ? (
         <p className="text-muted-foreground">
           No links yet. Create one to get started.
