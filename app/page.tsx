@@ -104,7 +104,17 @@ export default async function Home() {
 
       {/* Footer */}
       <footer className="border-t py-6 px-4 text-center text-sm text-muted-foreground">
-        &copy; {new Date().getFullYear()} LinkShortener. All rights reserved.
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <span>&copy; {new Date().getFullYear()} LinkShortener. All rights reserved.</span>
+          <a
+            href="https://hube.pe/contactus"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-foreground underline underline-offset-4 transition-colors"
+          >
+            Contact Us
+          </a>
+        </div>
       </footer>
     </div>
   );
