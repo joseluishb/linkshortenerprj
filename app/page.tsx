@@ -2,12 +2,7 @@ import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import { SignInButton, SignUpButton } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
-import {
-  LinkIcon,
-  BarChart3,
-  Zap,
-  ShieldCheck,
-} from "lucide-react";
+import { LinkIcon, Zap, ShieldCheck } from "lucide-react";
 
 const features = [
   {
@@ -15,12 +10,6 @@ const features = [
     title: "Instant Shortening",
     description:
       "Paste any long URL and get a clean, shareable short link in seconds.",
-  },
-  {
-    icon: BarChart3,
-    title: "Click Analytics",
-    description:
-      "Track how many times each link has been clicked and monitor engagement over time.",
   },
   {
     icon: Zap,
@@ -57,8 +46,8 @@ export default async function Home() {
           </h1>
 
           <p className="max-w-md text-base sm:text-lg text-muted-foreground leading-relaxed">
-            Create short, memorable links in seconds. Track every click and
-            manage all your links in one place.
+            Create short, memorable links in seconds and manage all your links
+            in one place.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 mt-2">
@@ -83,7 +72,7 @@ export default async function Home() {
             Everything you need to manage your links
           </h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             {features.map(({ icon: Icon, title, description }) => (
               <div
                 key={title}
@@ -105,7 +94,10 @@ export default async function Home() {
       {/* Footer */}
       <footer className="border-t py-6 px-4 text-center text-sm text-muted-foreground">
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <span>&copy; {new Date().getFullYear()} LinkShortener. All rights reserved.</span>
+          <span>
+            &copy; {new Date().getFullYear()} LinkShortener. All rights
+            reserved.
+          </span>
           <a
             href="/contactus"
             target="_blank"

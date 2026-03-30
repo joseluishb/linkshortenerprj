@@ -19,10 +19,10 @@ Before generating ANY code, you MUST:
 
 **You MUST open and read the relevant file from this table before generating any code for the corresponding domain. Do not rely on memory or assumptions — always read the file.**
 
-| Domain | File |
-| --- | --- |
-| Authentication (Clerk) | [`docs/auth.md`](docs/auth.md) |
-| UI Components (shadcn/ui) | [`docs/ui.md`](docs/ui.md) |
+| Domain                    | File                           |
+| ------------------------- | ------------------------------ |
+| Authentication (Clerk)    | [`docs/auth.md`](docs/auth.md) |
+| UI Components (shadcn/ui) | [`docs/ui.md`](docs/ui.md)     |
 
 ## Project Overview
 

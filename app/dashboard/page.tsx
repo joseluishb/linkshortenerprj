@@ -55,7 +55,10 @@ export default async function DashboardPage() {
                     </p>
                     <div className="flex gap-2">
                       <EditLinkDialog link={link} />
-                      <DeleteLinkDialog linkId={link.id} shortCode={link.shortCode} />
+                      <DeleteLinkDialog
+                        linkId={link.id}
+                        shortCode={link.shortCode}
+                      />
                     </div>
                   </div>
                 </CardContent>
@@ -67,4 +70,3 @@ export default async function DashboardPage() {
     </main>
   );
 }
-

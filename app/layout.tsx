@@ -38,19 +38,21 @@ export default function RootLayout({
           }}
         >
           <header className="flex items-center justify-between gap-3 border-b px-4 py-3">
-            <span className="font-semibold text-lg tracking-tight">LinkShortenerPrj</span>
+            <span className="font-semibold text-lg tracking-tight">
+              LinkShortenerPrj
+            </span>
             <div className="flex items-center gap-3">
-            <Show when="signed-out">
-              <SignInButton mode="modal" forceRedirectUrl="/dashboard">
-                <Button variant="ghost">Sign in</Button>
-              </SignInButton>
-              <SignUpButton mode="modal" forceRedirectUrl="/dashboard">
-                <Button>Sign up</Button>
-              </SignUpButton>
-            </Show>
-            <Show when="signed-in">
-              <UserButton />
-            </Show>
+              <Show when="signed-out">
+                <SignInButton mode="modal" forceRedirectUrl="/dashboard">
+                  <Button variant="ghost">Sign in</Button>
+                </SignInButton>
+                <SignUpButton mode="modal" forceRedirectUrl="/dashboard">
+                  <Button>Sign up</Button>
+                </SignUpButton>
+              </Show>
+              <Show when="signed-in">
+                <UserButton />
+              </Show>
             </div>
           </header>
           {children}

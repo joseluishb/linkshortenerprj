@@ -6,13 +6,25 @@ import { createLink, updateLink, deleteLink } from "@/data/links";
 
 const createLinkSchema = z.object({
   url: z.string().url("Please enter a valid URL"),
-  shortCode: z.string().min(1, "Short code is required").regex(/^[a-zA-Z0-9_-]+$/, "Only letters, numbers, hyphens and underscores are allowed"),
+  shortCode: z
+    .string()
+    .min(1, "Short code is required")
+    .regex(
+      /^[a-zA-Z0-9_-]+$/,
+      "Only letters, numbers, hyphens and underscores are allowed",
+    ),
 });
 
 const updateLinkSchema = z.object({
   id: z.number().int().positive(),
   url: z.string().url("Please enter a valid URL"),
-  shortCode: z.string().min(1, "Short code is required").regex(/^[a-zA-Z0-9_-]+$/, "Only letters, numbers, hyphens and underscores are allowed"),
+  shortCode: z
+    .string()
+    .min(1, "Short code is required")
+    .regex(
+      /^[a-zA-Z0-9_-]+$/,
+      "Only letters, numbers, hyphens and underscores are allowed",
+    ),
 });
 
 const deleteLinkSchema = z.object({
@@ -22,7 +34,7 @@ const deleteLinkSchema = z.object({
 type ActionResult = { success: true } | { error: string };
 
 export async function createLinkAction(
-  input: z.infer<typeof createLinkSchema>
+  input: z.infer<typeof createLinkSchema>,
 ): Promise<ActionResult> {
   const { userId } = await auth();
   if (!userId) return { error: "Unauthorized" };
@@ -40,7 +52,7 @@ export async function createLinkAction(
 }
 
 export async function updateLinkAction(
-  input: z.infer<typeof updateLinkSchema>
+  input: z.infer<typeof updateLinkSchema>,
 ): Promise<ActionResult> {
   const { userId } = await auth();
   if (!userId) return { error: "Unauthorized" };
@@ -61,7 +73,7 @@ export async function updateLinkAction(
 }
 
 export async function deleteLinkAction(
-  input: z.infer<typeof deleteLinkSchema>
+  input: z.infer<typeof deleteLinkSchema>,
 ): Promise<ActionResult> {
   const { userId } = await auth();
   if (!userId) return { error: "Unauthorized" };

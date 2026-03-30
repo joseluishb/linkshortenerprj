@@ -10,7 +10,7 @@ export async function getLinksByUserId(userId: string): Promise<SelectLink[]> {
 }
 
 export async function createLink(
-  data: Pick<InsertLink, "userId" | "url" | "shortCode">
+  data: Pick<InsertLink, "userId" | "url" | "shortCode">,
 ): Promise<void> {
   await db.insert(linksTable).values(data);
 }
@@ -18,7 +18,7 @@ export async function createLink(
 export async function updateLink(
   id: number,
   userId: string,
-  data: Pick<InsertLink, "url" | "shortCode">
+  data: Pick<InsertLink, "url" | "shortCode">,
 ): Promise<void> {
   await db
     .update(linksTable)
@@ -33,7 +33,7 @@ export async function deleteLink(id: number, userId: string): Promise<void> {
 }
 
 export async function getLinkByShortCode(
-  shortCode: string
+  shortCode: string,
 ): Promise<SelectLink | undefined> {
   const results = await db
     .select()
