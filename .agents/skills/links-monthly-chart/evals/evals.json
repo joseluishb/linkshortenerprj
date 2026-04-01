@@ -1,0 +1,64 @@
+{
+  "skill_name": "links-monthly-chart",
+  "evals": [
+    {
+      "id": 0,
+      "prompt": "Generate a bar chart of links created per month for the past 12 months and save it as links_monthly.png in the project root.",
+      "expected_output": "A PNG file named links_monthly.png is produced in the project root. Each of the 12 most recent calendar months is represented by a bar. The y-axis shows link counts. Each bar is labelled with its count.",
+      "files": [],
+      "assertions": [
+        {
+          "id": "png_exists",
+          "text": "A PNG file is written to the output path (links_monthly.png in the project root)",
+          "type": "file_exists"
+        },
+        {
+          "id": "twelve_months_covered",
+          "text": "The chart covers exactly 12 months on the x-axis",
+          "type": "qualitative"
+        },
+        {
+          "id": "bar_annotations",
+          "text": "Each bar is annotated with a numeric count",
+          "type": "qualitative"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "prompt": "Show me a monthly breakdown of how many short links were created over the last year. Export the chart as a PNG.",
+      "expected_output": "A PNG file is generated (default or specified path). The chart clearly shows monthly totals for the trailing 12 months with labelled axes and annotated bars.",
+      "files": [],
+      "assertions": [
+        {
+          "id": "png_produced",
+          "text": "A PNG file is created at the reported output path",
+          "type": "file_exists"
+        },
+        {
+          "id": "output_path_reported",
+          "text": "The agent reports the full output path to the user",
+          "type": "qualitative"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Can you plot link creation stats for the past year and save the image to /tmp/link_stats_chart.png?",
+      "expected_output": "The chart is saved to exactly /tmp/link_stats_chart.png. The script respects the --output flag.",
+      "files": [],
+      "assertions": [
+        {
+          "id": "custom_output_path",
+          "text": "The PNG is saved to /tmp/link_stats_chart.png as requested",
+          "type": "file_exists"
+        },
+        {
+          "id": "correct_output_path_used",
+          "text": "The --output flag is passed with the custom path when running the script",
+          "type": "qualitative"
+        }
+      ]
+    }
+  ]
+}
