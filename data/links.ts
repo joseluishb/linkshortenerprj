@@ -1,10 +1,55 @@
-import { eq } from "drizzle-orm";
-import { db, linksTable, SelectLink } from "@/db";
+import { and, count, desc, eq, gte } from "drizzle-orm";
+import { db, linksTable, InsertLink, SelectLink } from "@/db";
 
 export async function getLinksByUserId(userId: string): Promise<SelectLink[]> {
   return db
     .select()
     .from(linksTable)
     .where(eq(linksTable.userId, userId))
-    .orderBy(linksTable.createdAt);
+    .orderBy(desc(linksTable.updatedAt));
+}
+
+export async function createLink(
+  data: Pick<InsertLink, "userId" | "url" | "shortCode">,
+): Promise<void> {
+  await db.insert(linksTable).values(data);
+}
+
+export async function updateLink(
+  id: number,
+  userId: string,
+  data: Pick<InsertLink, "url" | "shortCode">,
+): Promise<void> {
+  await db
+    .update(linksTable)
+    .set({ ...data, updatedAt: new Date() })
+    .where(and(eq(linksTable.id, id), eq(linksTable.userId, userId)));
+}
+
+export async function deleteLink(id: number, userId: string): Promise<void> {
+  await db
+    .delete(linksTable)
+    .where(and(eq(linksTable.id, id), eq(linksTable.userId, userId)));
+}
+
+export async function getLinkByShortCode(
+  shortCode: string,
+): Promise<SelectLink | undefined> {
+  const results = await db
+    .select()
+    .from(linksTable)
+    .where(eq(linksTable.shortCode, shortCode))
+    .limit(1);
+  return results[0];
+}
+
+export async function countRecentLinksByUser(
+  userId: string,
+  since: Date,
+): Promise<number> {
+  const result = await db
+    .select({ value: count() })
+    .from(linksTable)
+    .where(and(eq(linksTable.userId, userId), gte(linksTable.createdAt, since)));
+  return result[0]?.value ?? 0;
 }

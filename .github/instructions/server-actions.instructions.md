@@ -43,7 +43,9 @@ const schema = z.object({
 
 type ActionResult = { success: true } | { error: string };
 
-export async function createLinkAction(input: z.infer<typeof schema>): Promise<ActionResult> {
+export async function createLinkAction(
+  input: z.infer<typeof schema>,
+): Promise<ActionResult> {
   const { userId } = await auth();
   if (!userId) return { error: "Unauthorized" };
 
