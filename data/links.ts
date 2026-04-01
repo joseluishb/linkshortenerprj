@@ -1,4 +1,4 @@
-import { and, desc, eq } from "drizzle-orm";
+import { and, count, desc, eq, gte } from "drizzle-orm";
 import { db, linksTable, InsertLink, SelectLink } from "@/db";
 
 export async function getLinksByUserId(userId: string): Promise<SelectLink[]> {
@@ -41,4 +41,15 @@ export async function getLinkByShortCode(
     .where(eq(linksTable.shortCode, shortCode))
     .limit(1);
   return results[0];
+}
+
+export async function countRecentLinksByUser(
+  userId: string,
+  since: Date,
+): Promise<number> {
+  const result = await db
+    .select({ value: count() })
+    .from(linksTable)
+    .where(and(eq(linksTable.userId, userId), gte(linksTable.createdAt, since)));
+  return result[0]?.value ?? 0;
 }
